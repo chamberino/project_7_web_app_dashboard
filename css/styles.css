@@ -1,0 +1,294 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font: 1rem/1.5 'Roboto', sans-serif, Helvetica;
+  min-height: 100vh;
+  background-color: #fff;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: .75em;
+}
+
+
+/* VARIABLES */
+:root {
+  --color-primary: #7479BD;
+  --color-secondary: #4D4D71;
+}
+
+/*Container Rules*/
+.grid {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr;
+  grid-template-rows: 80px 80px;
+  grid-auto-columns: ;
+  grid-auto-rows: 400px;
+  /* grid-gap: 10px; */
+  grid-template-areas:
+    "head head head"
+    "sidebar search search"
+    "sidebar traffic traffic"
+    "sidebar daily-traffic daily-traffic"
+    "sidebar mobile-users mobile-users"
+    "sidebar social-stats social-stats"
+    "sidebar new-members new-members"
+    "sidebar recent-activity recent-activity"
+    "sidebar message message"
+    "sidebar settings settings"
+
+    "sidebar footer footer";
+  /* Set only the top row to 100px */
+
+
+  /*
+    Declare 3 flexible column tracks
+     - The first track should take up two fractions of the available space
+     - The second and third tracks should take up one fraction of the space
+  */
+
+
+  /* Apply a 10px gutter between rows and columns */
+
+
+  /*
+    Place items on the grid using their grid area names
+      - Use the image 'grid-template-areas.png' as a reference
+  */
+
+
+}
+
+.head {
+  grid-area: head;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.search {
+  grid-area: search;
+}
+
+.traffic {
+  grid-area: traffic;
+}
+
+.daily-traffic {
+  grid-area: daily-traffic;
+}
+
+.mobile-users {
+  grid-area: mobile-users;
+}
+
+.social-stats {
+  grid-area: social-stats;
+}
+
+.new-members {
+  grid-area: new-members;
+}
+
+.recent-activity {
+  grid-area: recent-activity
+}
+
+.message {
+  grid-area: message;
+}
+
+.settings {
+  grid-area: settings;
+}
+
+footer {
+  grid-area: footer;
+}
+
+
+
+/*Page Styles*/
+
+.grid > * {
+  /* color: #fff; */
+  /* padding: 1em; */
+}
+.head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-weight: 300;
+  background-color: var(--color-primary);
+}
+
+.profile > * {
+  margin: 0 6px;
+  font-weight: 300;
+}
+
+.head h1 {
+  font-weight: 400;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.member-pic,
+.profile-image {
+  object-fit: cover;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  display: inline;
+}
+
+.sidebar {
+  background-color: var(--color-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-icon {
+  margin: .75em 0;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#search {
+  margin-right: 2em;
+}
+
+input {
+  border: 1px solid #b2b2b2;
+  width: 350px;
+  padding: 5px;
+  margin: 15px;
+  height: 40px;
+  border-radius: 8px;
+  display: block;
+  font-size: 16px;
+  background: #fff;
+  background-image: url(../icons/search-interface-symbol.svg);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 97% 53%;
+  transition: background-color .25s ease-out;
+}
+
+::-webkit-input-placeholder {
+  text-align: left;
+  font-weight: lighter;
+  color: #bfbdbd;
+  font-size: 1em;
+  padding-left: 1.5em;
+}
+
+.traffic {
+  height:40%;
+  width:40%;
+  margin: auto;
+}
+
+.social-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.social-icon {
+  height: 100px;
+  width: 100px; */
+  border-radius: 50%;
+  background-color: #7377bf;
+  padding: 30px;
+  margin-right: 1em;
+}
+
+.social-div {
+  display: flex;
+  align-items: center;
+  background-color: #fbfbfb;
+  color: var(--color-secondary);
+  padding: 1em 2em;
+  border: 1px solid #trafficb2b2b2;
+}
+
+.social-div h1,
+.social-div h3 {
+  margin: auto;
+  /* margin-left: 1em; */
+  text-align: center;
+}
+
+
+.new-members {
+  display: flex;
+  flex-direction: column;
+}
+
+.member {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.date {
+  margin-left: auto;
+}
+
+.grid div {
+  /* background-color: #8494a4; */
+}
+footer {
+  background-color: #33cacb;
+}
+
+.traffic-container {
+  display: block;
+  max-width:800px;
+  max-height:200px;
+}
+
+/* Media Queries */
+
+@media screen and (min-width: 720px) {
+  .grid {
+    grid-template-areas:
+      "head head head"
+      "sidebar search search"
+      "sidebar traffic traffic"
+      "sidebar daily-traffic daily-traffic"
+      "sidebar mobile-users mobile-users"
+      "sidebar social-stats social-stats"
+      "sidebar new-members recent-activity"
+
+      "sidebar message message"
+      "sidebar settings settings"
+
+      "sidebar footer footer";
+  }
+}
