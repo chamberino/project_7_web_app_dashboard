@@ -213,6 +213,14 @@ input {
   margin: auto;
 }
 
+.traffic-container {
+  display: block;
+  position: relative;
+  margin: auto;
+  height: 40vh;
+  width: 60vw;
+}
+
 .social-stats {
   display: flex;
   align-items: center;
@@ -267,11 +275,6 @@ footer {
   background-color: #33cacb;
 }
 
-.traffic-container {
-  display: block;
-  max-width:800px;
-  max-height:200px;
-}
 
 /* Media Queries */
 

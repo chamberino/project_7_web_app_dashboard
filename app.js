@@ -37,7 +37,7 @@ var myChart = new Chart(ctx, {
         scales: {
             yAxes: [{
                 ticks: {
-                    labelOffset: 110,
+                    labelOffset: 20,
                     max: 250,
                     min: 0,
                     stepSize: 50
