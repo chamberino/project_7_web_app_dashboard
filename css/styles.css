@@ -19,7 +19,6 @@ ul {
   padding-left: .75em;
 }
 
-
 /* VARIABLES */
 :root {
   --color-primary: #7479BD;
@@ -29,11 +28,12 @@ ul {
 /*Container Rules*/
 .grid {
   height: 100vh;
+  width: 100%;
   display: grid;
-  grid-template-columns: 100px 1fr 1fr;
+  grid-template-columns: 80px 1fr 1fr;
   grid-template-rows: 80px 80px;
   grid-auto-columns: ;
-  grid-auto-rows: 400px;
+  /* grid-auto-rows: 400px; */
   /* grid-gap: 10px; */
   grid-template-areas:
     "head head head"
@@ -48,6 +48,8 @@ ul {
     "sidebar settings settings"
 
     "sidebar footer footer";
+
+  }
   /* Set only the top row to 100px */
 
 
@@ -66,7 +68,35 @@ ul {
       - Use the image 'grid-template-areas.png' as a reference
   */
 
+.arrow {
+  position: fixed;
+  left: -4px;
+  top: 50%;
+  background-color: var(--color-primary);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 100;
+}
 
+.grid-item {
+  position: relative;
+  right:40px;
+  -webkit-transition: right .5s;
+}
+
+.open {
+  -webkit-transition: right .5s;
+  right: 0px;
+}
+
+.sidebar {
+  position: relative;
+  right: 80px;
+  -webkit-transition: right .5s;
+}
+
+.close {
+  -webkit-transition: right .5s;
+  right: 0px;
 }
 
 .head {
@@ -121,6 +151,14 @@ footer {
 
 /*Page Styles*/
 
+.section-title {
+  font-size: 1em;
+  font-weight: 300;
+  color: #3f3f3f;
+  padding-left: 1em;
+  margin: 0 auto;
+}
+
 .grid > * {
   /* color: #fff; */
   /* padding: 1em; */
@@ -144,11 +182,16 @@ footer {
   font-weight: 400;
 }
 
+.logo {
+  padding-left: 1em;
+}
+
 .profile {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  padding-right: 1em;
 }
 
 .member-pic,
@@ -207,42 +250,54 @@ input {
   padding-left: 1.5em;
 }
 
-.traffic {
+/* .traffic {
   height:40%;
   width:40%;
   margin: auto;
+} */
+
+.daily-traffic,
+.mobile-users {
+  border: 1px solid #d6d6d6;
+}
+
+.mobile-users {
+  border-top: none;
 }
 
 .traffic-container {
   display: block;
-  position: relative;
+  /* position: relative; */
   margin: auto;
-  height: 40vh;
-  width: 60vw;
+  height: 95%;
+  width: 95%;
+  padding: 1em;
 }
 
 .social-stats {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
 }
 
 .social-icon {
-  height: 100px;
-  width: 100px; */
+  height: 60px;
+  width: 60px; */
   border-radius: 50%;
   background-color: #7377bf;
-  padding: 30px;
+  padding: 16px;
   margin-right: 1em;
 }
 
 .social-div {
   display: flex;
   align-items: center;
-  background-color: #fbfbfb;
+  background-color: #f9f9f9;
   color: var(--color-secondary);
-  padding: 1em 2em;
-  border: 1px solid #trafficb2b2b2;
+  padding: 1em 1em;
+  border: solid 1px #f4f2f2;
+  margin: 1em auto;
 }
 
 .social-div h1,
@@ -254,25 +309,46 @@ input {
 
 
 .new-members {
+  padding: 1em 0;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  margin: auto;
 }
 
 .member {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  width: 100%;
+  margin: auto;
+  text-align: center;
   /* justify-content: space-between; */
 }
 
+.member {
+  background-color: #f9f9f9;
+  border: solid 1px #f4f2f2;
+}
+
+.member ul {
+  margin: 0;
+}
+
 .date {
-  margin-left: auto;
+  margin: 0;
+  /* margin-left: auto; */
+}
+
+.recent-activity {
+  padding-top: 1em;
 }
 
 .grid div {
   /* background-color: #8494a4; */
 }
 footer {
-  background-color: #33cacb;
+  /* background-color: #33cacb; */
 }
 
 
@@ -284,8 +360,7 @@ footer {
       "head head head"
       "sidebar search search"
       "sidebar traffic traffic"
-      "sidebar daily-traffic daily-traffic"
-      "sidebar mobile-users mobile-users"
+      "sidebar daily-traffic mobile-users"
       "sidebar social-stats social-stats"
       "sidebar new-members recent-activity"
 
@@ -293,5 +368,24 @@ footer {
       "sidebar settings settings"
 
       "sidebar footer footer";
+  }
+  .social-stats {
+    flex-direction: row;
+  }
+
+  .mobile-users {
+    border-left: none;
+    border-top: 1px solid #d6d6d6;
+  }
+
+
+@media screen and (min-width: 950px) {
+    .social-icon {
+      height: 100px;
+      width: 100px;
+      padding: 30px;
+  }
+  .social-div {
+    padding: 1em 2em;
   }
 }
