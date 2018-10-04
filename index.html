@@ -29,11 +29,18 @@ width="60px"/>
           <img class="sidebar-icon" src="icons/icon-settings.svg" height="30px"width="30px"/>
         </nav>
 
-        <div class="search grid-item"><input id="search" type="text" name="image_search" placeholder="Search"></div>
+        <div class="search grid-item">
+          <input id="search" type="text" name="image_search" placeholder="Search">
+        </div>
 
         <div class="traffic grid-item">
+          <h1 class="tab">DASHBOARD</h1>
+          <div class="alert">
+            <h3><strong>Alert:</strong> Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor nibh ultricies vehicula ut id elit.</h3>
+            <h2 class ="close-alert">&times</h2>
+          </div>
           <h1 class="section-title">TRAFFIC</h1>
-          <div class="traffic-container">
+          <div class="daily-traffic-container">
             <canvas id="myChart"></canvas>
           </div>
         </div>
@@ -49,7 +56,7 @@ width="60px"/>
 
         <div class="mobile-users grid-item">
           <h1 class="section-title">MOBILE-USERS</h1>
-          <div class="traffic-container">
+          <div class="mobile-container">
             <canvas id="myChart3"></canvas>
           </div>
         </div>

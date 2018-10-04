@@ -1,3 +1,10 @@
+//Opening sidebar changed grid-template-area layout
+const grid = document.querySelector('.grid');
+const search = document.querySelector('#search');
+
+
+
+// Event listener for sidebar arrow. Adds class to reposition grid-items when sidebar is open. //
 const sidebarButton = document.querySelector('.arrow');
 const sidebar = document.querySelector('.sidebar');
 const gridItem = document.querySelectorAll('.grid-item')
@@ -5,8 +12,11 @@ sidebarButton.addEventListener('click', ()=> {
   for(i=0; i<gridItem.length; i++) {
     gridItem[i].classList.add('open')
   }
+  // search.classList.add('open');
+  // search.style.marginLeft = "4.3em"
   sidebar.classList.add('close');
   sidebarButton.style.display = 'none'
+  // grid.style.gridTemplateAreas = '"head head head""sidebar search search""sidebar traffic traffic""sidebar daily-traffic daily-traffic""sidebar mobile-users mobile-users""sidebar social-stats social-stats""sidebar new-members new-members""sidebar recent-activity recent-activity""sidebar message message""sidebar settings settings""sidebar footer footer"';
 });
 
 sidebar.addEventListener('click', ()=> {
@@ -16,6 +26,14 @@ sidebar.addEventListener('click', ()=> {
   }
   sidebar.classList.remove('close');
   sidebarButton.style.display = ''
+  // grid.style.gridTemplateAreas = '"head head head""search search search""sidebar traffic traffic""sidebar daily-traffic daily-traffic""sidebar mobile-users mobile-users""sidebar social-stats social-stats""sidebar new-members new-members""sidebar recent-activity recent-activity""sidebar message message""sidebar settings settings""sidebar footer footer"';
+});
+
+// Close Alert message //
+const closeAlert = document.querySelector('.close-alert');
+closeAlert.addEventListener('click', () => {
+  const alert = document.querySelector('.alert');
+  alert.parentNode.removeChild(alert);
 });
 
 
@@ -126,19 +144,11 @@ var myChart2 = new Chart(ctx, {
             'rgb(129, 201, 143)',
             'rgb(116, 177, 191)',
           ],
-          borderWidth: 1
+          // borderWidth: 1
       }]
   },
   options: {
       scales: {
-          yAxes: [{
-              ticks: {
-                  labelOffset: 20,
-                  max: 250,
-                  min: 0,
-                  stepSize: 50
-              }
-          }]
       }
   }
 });
