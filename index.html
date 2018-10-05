@@ -14,16 +14,21 @@ width="60px"/>
         <header class="head">
           <h1 class="logo"><strong>Your</strong>App™</h1>
           <div class="profile">
-            <img class="bell" src="icons/icon-bell.svg" height="30px"
+            <div class="bell">
+              <img src="icons/icon-bell.svg" height="30px"
     width="30px"/>
-            <h1>|</h1>
-            <img src="images/Chambers_Union.JPG" alt="Michael Chambers Headshot" class="profile-image">
-            <!-- <h4>Michael Chambers</h4> -->
+              <p class="active-alert">&#9679;</p>
+            </div>
+            <div class="profile-img-container">
+              <img src="images/Chambers_Union.JPG" alt="Michael Chambers Headshot" class="profile-image">
+            </div>
+            <h4 class="userName">Michael Chambers</h4>
           </div>
         </header>
 
         <nav class="sidebar grid-item">
-          <img class="sidebar-icon" src="icons/icon-dashboard.svg" height="30px"width="30px"/>
+          <div class="active"></div>
+          <img class="sidebar-icon active-icon" src="icons/icon-dashboard.svg" height="30px"width="30px"/>
           <img class="sidebar-icon" src="icons/icon-members.svg" height="30px"width="30px"/>
           <img class="sidebar-icon" src="icons/icon-visits.svg" height="30px"width="30px"/>
           <img class="sidebar-icon" src="icons/icon-settings.svg" height="30px"width="30px"/>
@@ -39,9 +44,11 @@ width="60px"/>
             <h3><strong>Alert:</strong> Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor nibh ultricies vehicula ut id elit.</h3>
             <h2 class ="close-alert">&times</h2>
           </div>
+          <div class="traffic-chart">
           <h1 class="section-title">TRAFFIC</h1>
           <div class="daily-traffic-container">
             <canvas id="myChart"></canvas>
+          </div>
           </div>
         </div>
 
@@ -62,25 +69,28 @@ width="60px"/>
         </div>
 
         <div class="social-stats grid-item">
-          <div class="social-div">
-            <img class="social-icon" src="icons/icon-twitter.svg" >
-            <div>
-              <h3>Twitter</h3>
-              <h1>1087</h1>
+          <h1 class="section-title">SOCIAL STATS</h1>
+          <div class="social-stats-container">
+            <div class="social-div">
+              <img class="social-icon" src="icons/icon-twitter.svg" >
+              <div>
+                <h3>Twitter</h3>
+                <h1>10,345</h1>
+              </div>
             </div>
-          </div>
-          <div class="social-div">
-            <img class="social-icon" src="icons/icon-facebook.svg" height="60px"width="60px"/>
-            <div>
-              <h3>Facebook</h3>
-              <h1>1087</h1>
+            <div class="social-div">
+              <img class="social-icon" src="icons/icon-facebook.svg" height="60px"width="60px"/>
+              <div>
+                <h3>Facebook</h3>
+                <h1>8,739</h1>
+              </div>
             </div>
-          </div>
-          <div class="social-div">
-            <img class="social-icon" src="icons/icon-google-plus.svg" height="60px"width="60px"/>
-            <div>
-              <h3>Google +</h3>
-              <h1>1087</h1>
+            <div class="social-div">
+              <img class="social-icon" src="icons/icon-google-plus.svg" height="60px"width="60px"/>
+              <div>
+                <h3>Google +</h3>
+                <h1>2,530</h1>
+              </div>
             </div>
           </div>
         </div>
@@ -90,9 +100,11 @@ width="60px"/>
             <img src="images/member-1.jpg" alt="Victoria Chambers" class="member-pic">
             <ul>
               <li>Victoria Chambers</li>
-              <li><a href>victoria.chambers80@example.com</a></li>
+              <li><a href>victoria80@example.com</a></li>
             </ul>
-            <p class="date">10/15/15</p>
+            <div class="date">
+              <p>10/15/15</p>
+            </div>
           </div>
           <div class="member">
             <img src="images/member-2.jpg" alt="Dale Byrd" class="member-pic">
@@ -100,7 +112,9 @@ width="60px"/>
               <li>Dale Byrd</li>
               <li><a href>dale.byrd52@example.com</a></li>
             </ul>
-              <p class="date">10/15/15</p>
+            <div class="date">
+              <p>10/15/15</p>
+            </div>
           </div>
           <div class="member">
             <img src="images/member-3.jpg" alt="Dawn Wood" class="member-pic">
@@ -108,7 +122,9 @@ width="60px"/>
               <li>Dawn Wood</li>
               <li><a href>dawn.wood16@example.com</a></li>
             </ul>
-            <p class="date">10/15/15</p>
+            <div class="date">
+              <p>10/15/15</p>
+            </div>
           </div>
             <div class="member">
             <img src="images/member-4.jpg" alt="Dan Oliver" class="member-pic">
@@ -116,7 +132,9 @@ width="60px"/>
               <li>Dan Oliver</li>
               <li><a href>dan.oliver82@example.com</a></li>
             </ul>
-            <p class="date">10/15/15</p>
+            <div class="date">
+              <p>10/15/15</p>
+            </div>
           </div>
         </div>
 
@@ -124,42 +142,76 @@ width="60px"/>
           <div class="member">
             <img src="images/member-1.jpg" alt="Victoria Chambers" class="member-pic">
             <ul>
-              <li>Victoria Chambers</li>
-              <li><a href>victoria.chambers80@example.com</a></li>
+              <li>Victoria Chambers commented on YourApp's SEO Tips</li>
+              <li>4 hours ago</li>
             </ul>
-            <p class="date">10/15/15</p>
+            <div class="date">
+              <span>&#8250;</span>
+            </div>
           </div>
           <div class="member">
             <img src="images/member-2.jpg" alt="Dale Byrd" class="member-pic">
             <ul>
-              <li>Dale Byrd</li>
-              <li><a href>dale.byrd52@example.com</a></li>
+              <li>Dale Byrd liked the post Facebook's Changes for 2016</li>
+              <li>5 hours ago</li>
             </ul>
-              <p class="date">10/15/15</p>
+            <div class="date">
+              <span>&#8250;</span>
+            </div>
           </div>
           <div class="member">
             <img src="images/member-3.jpg" alt="Dawn Wood" class="member-pic">
             <ul>
-              <li>Dawn Wood</li>
-              <li><a href>dawn.wood16@example.com</a></li>
+              <li>Dawn Wood commented on Facebook's Changed for 2016</li>
+              <li>5 hours ago</li>
             </ul>
-            <p class="date">10/15/15</p>
+            <div class="date">
+              <span>&#8250;</span>
+            </div>
           </div>
             <div class="member">
             <img src="images/member-4.jpg" alt="Dan Oliver" class="member-pic">
             <ul>
-              <li>Dan Oliver</li>
-              <li><a href>dan.oliver82@example.com</a></li>
+              <li>Dan Oliver posted YourApp's SEO Tips</li>
+              <li>1 day ago</li>
             </ul>
-            <p class="date">10/15/15</p>
+            <div class="date">
+              <span>&#8250;</span>
+            </div>
           </div>
         </div>
 
-        <div class="message grid-item">Message User</div>
+        <div class="message grid-item">
+          <h1 class="section-title">Message User</h1>
+          <input required class="field" type="text" id="name" name="user_name" placeholder="Search for User">
+          <textarea id="other_topics" name="user_interests" maxlength="280" placeholder="Message for User"></textarea>
+          <button type="submit">SEND</button>
+        </div>
 
-        <div class="setting grid-item">Settings</div>
+        <div class="settings grid-item">
+          <h1 class="section-title">Settings</h1>
+          <div class="settings-options">
+            <input class="checkbox" type="checkbox" id="html_news" value="newsletter_html" name="newsletter"><label for="html_news">Send Email Notifications</label>
+          </div>
+          <div>
+            <div class="settings-options">
+              <input class="checkbox" type="checkbox" id="checkbox" value="newsletter_html" name="newsletter"><label for="html_news">Set Profile to Public</label>
+            </div>
+          </div>
+          <select class="field" id="state" name="user_state">
+            <optgroup label="State">
+              <option value="" disabled selected>Select Timezone</option>
+              <option value="AL">Alabama</option>
+            	<option value="AK">Alaska</option>
+            </optgroup>
+          </select>
+          <div class="settings-buttons">
+            <button class="save" type="button">SAVE</button>
+            <button class="cancel" type="button">CANCEL</button>
+          </div>
+        </div>
 
-        <footer class=grid-item>Footer</footer>
+        <!-- <footer class=grid-item>Footer</footer> -->
 
       </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>

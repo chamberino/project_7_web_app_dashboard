@@ -19,6 +19,35 @@ ul {
   padding-left: .75em;
 }
 
+span {
+  font-size: 2em;
+  color: var(--color-primary);
+}
+
+span:hover {
+  cursor: pointer;
+}
+
+button {
+  color: #FFF;
+  display: block;
+  width: 90%;
+  padding: .75em;
+  margin: 15px auto;
+  background-color: var(--color-primary);
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  border: 1px solid var(--color-primary);
+  transition: background-color .25s ease-out;
+}
+
+button:hover {
+    background-color:var(--color-secondary);
+    box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+}
+
 /* VARIABLES */
 :root {
   --color-primary: #7479BD;
@@ -31,7 +60,7 @@ ul {
   width: 100%;
   display: grid;
   grid-template-columns: 80px 1fr 1fr;
-  grid-template-rows: 80px 80px;
+  grid-template-rows: 70px 80px;
   grid-auto-columns: ;
   /* grid-auto-rows: 400px; */
   /* grid-gap: 10px; */
@@ -45,10 +74,7 @@ ul {
     "sidebar new-members new-members"
     "sidebar recent-activity recent-activity"
     "sidebar message message"
-    "sidebar settings settings"
-
-    "sidebar footer footer";
-
+    "sidebar settings settings";
   }
   /* Set only the top row to 100px */
 
@@ -70,6 +96,18 @@ ul {
 
 .tab {
   display: none;
+}
+
+.bell {
+  position: relative;
+  cursor: pointer;
+}
+
+.active-alert {
+  position: absolute;
+  bottom: 12px;
+  left: 22px;
+  color: #81C98F;
 }
 
 .arrow {
@@ -132,7 +170,7 @@ ul {
 .sidebar {
   position: relative;
   right: 80px;
-  bottom: 80px;
+  /* bottom: 80px; */
   -webkit-transition: right .5s;
 }
 
@@ -185,21 +223,20 @@ ul {
   grid-area: settings;
 }
 
-footer {
-  grid-area: footer;
-}
-
-
-
 /*Page Styles*/
 
 .section-title {
   font-size: 1em;
-  font-weight: 300;
-  color: #3f3f3f;
+  font-weight: 400;
+  color: #4f4e4e;
   padding-top: 1em;
-  padding-left: 1em;
+  padding-left: 20px;
   margin: 0 auto;
+  text-align: center;
+}
+
+.traffic .section-title {
+  padding-top: 0;
 }
 
 .grid > * {
@@ -221,12 +258,14 @@ footer {
   font-weight: 300;
 }
 
-.head h1 {
-  font-weight: 400;
-}
-
 .logo {
   padding-left: 1em;
+  font-weight: 100;
+  font-size: 1.5em;
+}
+
+.logo:hover {
+  cursor: pointer;
 }
 
 .profile {
@@ -247,6 +286,24 @@ footer {
   display: inline;
 }
 
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border: none;
+  /* margin-top: 2px; */
+  margin-left: 1em;
+  cursor: pointer;
+}
+
+.profile-img-container {
+  /* padding-left: ; */
+  border-left: 1px solid var(--color-secondary);
+}
+
+.userName {
+  display: none;
+}
+
 .sidebar {
   background-color: var(--color-secondary);
   display: flex;
@@ -255,7 +312,31 @@ footer {
 }
 
 .sidebar-icon {
-  margin: .75em 0;
+  margin: 1.5em 0;
+  opacity: .5;
+}
+.sidebar-icon:hover {
+  cursor: pointer;
+  opacity: 10;
+  transition: all .5s;
+}
+
+/* .sidebar-icon {
+  border-left: 3px solid #81C98F;
+} */
+
+.active {
+  border-right: 4px solid #81C98F;
+  border-radius: 5px;
+  padding-left: 2em;
+  height: 50px;
+  position: absolute;
+  right: 4.8em;
+  top: .75em;
+}
+
+.active-icon {
+  opacity: 10;
 }
 
 .search {
@@ -268,25 +349,63 @@ footer {
   /* border-bottom: solid 1px #f4f2f2; */
 }
 
-/* #search {
-  width: 70%;
+/* .message button {
+  margin-bottom: 4em;
 } */
 
+textarea,
+select,
 input {
   border: 1px solid #b2b2b2;
-  width: 300px;
+  width: 90%;
   padding: 5px;
-  margin: 15px;
+  margin: 15px auto;
   height: 40px;
-  border-radius: 8px;
+  border-radius: 5px;
   display: block;
   font-size: 16px;
+  font-weight: 300;
   background: #f9f9f9;
+  transition: background-color .25s ease-out;
+  color: #cecece;
+}
+
+#search {
   background-image: url(../icons/search-interface-symbol.svg);
   background-size: 20px;
   background-repeat: no-repeat;
   background-position: 97% 53%;
-  transition: background-color .25s ease-out;
+}
+
+textarea {
+  margin-top: 1em;
+  margin-bottom: 2em;
+  height: 100px;
+  resize: none;
+}
+
+input.checkbox {
+  width: 20px;
+  display: inline-block;
+  margin: 0;
+  margin-right: 6em;
+}
+
+label {
+  font-size: 1em;
+  padding-right: 20px;
+  padding-left: 20px;
+  color: #7c7c7c;
+  font-weight: 300;
+  display: inline-block;
+  position
+}
+
+.settings-options {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
 }
 
 ::-webkit-input-placeholder {
@@ -294,7 +413,8 @@ input {
   font-weight: lighter;
   color: #bfbdbd;
   font-size: 1em;
-  padding-left: 1.5em;
+  padding-left: 1em;
+  padding-top: 4px;
 }
 
 
@@ -310,6 +430,10 @@ input {
 .daily-traffic-container {
   margin: auto;
   height: 210px;
+  padding: 1em;
+}
+.traffic-chart {
+  margin: auto;
   border: 1px solid #d6d6d6;
   border-bottom: none;
   padding-top: 1em;
@@ -318,14 +442,20 @@ input {
 .traffic-container,
 .mobile-container {
   display: block;
-  /* position: relative; */
   margin: auto;
   height: 182px;
   width: 95%;
   padding: 1em;
 }
 
-.social-stats {
+/* .social-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+} */
+
+.social-stats-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -351,11 +481,19 @@ input {
   margin: 1em auto;
 }
 
+.social-div h3 {
+  color: var(--color-primary);
+}
+
 .social-div h1,
 .social-div h3 {
   margin: auto;
-  /* margin-left: 1em; */
   text-align: center;
+}
+
+.social-div h1 {
+  font-weight: 300;
+  color: #3f3f3f;
 }
 
 
@@ -382,24 +520,46 @@ input {
   border: solid 1px #f4f2f2;
 }
 
-.member ul {
+.member ul,
+.member p {
   margin: 0;
-}
-
-.date {
-  margin: 0;
-  /* margin-left: auto; */
+  font-size: .8em;
 }
 
 .recent-activity {
   padding-top: 1em;
 }
 
-.grid div {
-  /* background-color: #8494a4; */
+.settings-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
 }
-footer {
-  /* background-color: #33cacb; */
+.settings-buttons button {
+  /* margin: 0 1em; */
+  width: 47%;
+  margin: 0;
+}
+
+button.cancel {
+  background-color: #b2b2b2;
+  border: 1px solid #b2b2b2;
+}
+
+button.cancel:hover {
+  background-color:#939393;
+  border: 1px solid #939393;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+}
+
+.member ul,
+.member p {
+  font-size: 1em;
+}
+
+.settings-options:last-of-type {
+  margin-bottom: 2em;
 }
 
 
@@ -414,17 +574,18 @@ footer {
       "sidebar daily-traffic mobile-users"
       "sidebar social-stats social-stats"
       "sidebar new-members recent-activity"
+      "sidebar message settings";
 
-      "sidebar message message"
-      "sidebar settings settings"
-
-      "sidebar footer footer";
-      grid-template-rows: 80px 80px;
+    grid-template-rows: 80px 80px;
   }
 
   .grid-item {
     -webkit-transition: right .5s;
     right: 0px;
+  }
+
+  .userName {
+    display: block;
   }
 
   .alert {
@@ -450,8 +611,23 @@ footer {
     border-bottom: solid 1px #f4f2f2;
   }
 
-  input {
+  #search {
     background: #fff;
+    width: 40%;
+    margin-right: 0;
+    padding-right: 0;
+  }
+
+  div.search.grid-item {
+    padding-right: 4%;
+  }
+
+.section-title {
+  text-align: left;
+}
+
+  .traffic-chart {
+
   }
 
   .daily-traffic-container {
@@ -460,7 +636,11 @@ footer {
     border:none;
   }
 
-  .traffic-container {
+  .traffic-chart {
+    border:none;
+  }
+
+  .daily-traffic {
     border-left: none;
   }
   .mobile-container {
@@ -470,20 +650,19 @@ footer {
   .mobile-container {
     height: 290px;
     padding: 2em;
-
   }
 
   .tab {
     display: block;
     position: absolute;
     background-color: #fff;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 1em;
-    color: #3f3f3f;
+    color: #4f4e4e;
     border-right: solid 1px #f4f2f2;
     height: 80px;
     top: -90px;
-    padding-top: 20px;
+    padding-top: 30px;
     padding-right: 1.5em;
     padding-left: 1.5em;
   }
@@ -492,14 +671,35 @@ footer {
     justify-content: flex-end;
   }
 
-  .social-stats {
+  .social-stats-container {
     flex-direction: row;
   }
 
   .mobile-users {
     border-left: none;
+    border-right: none;
     border-top: 1px solid #d6d6d6;
   }
+  .member {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 1em 0 1em 1em;
+    text-align: left;
+  }
+
+  .date {
+    margin: 0;
+    margin-left: auto;
+    padding-right: .5em;
+  }
+
+  .member ul,
+  .member p {
+    font-size: .8em;
+  }
+}
+
 
 
 @media screen and (min-width: 950px) {
@@ -514,5 +714,16 @@ footer {
   .alert {
     height: 50px;
     padding: 1em;
+  }
+
+  .member {
+    padding: 1em 2% 1em 4%;
+  }
+}
+
+@media screen and (min-width: 1070px) {
+  .member ul,
+  .member p {
+    font-size: .9em;
   }
 }
