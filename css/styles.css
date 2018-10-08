@@ -33,6 +33,8 @@ span:hover {
   cursor: pointer;
 }
 
+a[href^="mailto"] { color: #4f4e4e; }
+
 button {
   color: #FFF;
   display: block;
@@ -68,7 +70,6 @@ button:hover {
   display: grid;
   grid-template-columns: 80px 1fr 1fr;
   grid-template-rows: 70px 80px;
-  grid-auto-columns: ;
   grid-template-areas:
     "head head head"
     "sidebar search search"
@@ -459,7 +460,6 @@ label {
   color: #7c7c7c;
   font-weight: 300;
   display: inline-block;
-  position
 }
 
 .checkbox {
@@ -639,8 +639,8 @@ label {
 
 .social-icon {
   height: 60px;
-  width: 60px; */
-  border-radius: 50%;
+  width: 60px;
+  /* border-radius: 50%; */
   background-color: #7377bf;
   padding: 16px;
   margin-right: 1em;
