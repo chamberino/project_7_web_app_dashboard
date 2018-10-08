@@ -394,3 +394,8 @@ saveButton.addEventListener('click', () => {
   save();
   alert('Your settings have been saved!')
 })
+
+const sendMessage = document.querySelector('#sendMessage');
+sendMessage.addEventListener('click', () => {
+  alert('Your message has been sent!')
+})
