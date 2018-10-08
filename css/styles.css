@@ -700,6 +700,11 @@ label {
 .member p {
   margin: 0;
   font-size: .8em;
+  cursor: pointer;
+}
+
+.member img {
+  cursor: pointer;
 }
 
 .recent-activity {
