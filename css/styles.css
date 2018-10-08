@@ -14,9 +14,14 @@ a {
   text-decoration: none;
 }
 
+p {
+  color: #4f4e4e;
+}
+
 ul {
   list-style-type: none;
   padding-left: .75em;
+  color: #4f4e4e;
 }
 
 span {
@@ -33,7 +38,7 @@ button {
   display: block;
   width: 90%;
   padding: .75em;
-  margin: 15px auto;
+  margin: 0 auto;
   background-color: var(--color-primary);
   font-size: 18px;
   text-align: center;
@@ -42,6 +47,8 @@ button {
   border: 1px solid var(--color-primary);
   transition: background-color .25s ease-out;
 }
+
+button:focus {outline:0 !important;}
 
 button:hover {
     background-color:var(--color-secondary);
@@ -62,8 +69,6 @@ button:hover {
   grid-template-columns: 80px 1fr 1fr;
   grid-template-rows: 70px 80px;
   grid-auto-columns: ;
-  /* grid-auto-rows: 400px; */
-  /* grid-gap: 10px; */
   grid-template-areas:
     "head head head"
     "sidebar search search"
@@ -76,23 +81,6 @@ button:hover {
     "sidebar message message"
     "sidebar settings settings";
   }
-  /* Set only the top row to 100px */
-
-
-  /*
-    Declare 3 flexible column tracks
-     - The first track should take up two fractions of the available space
-     - The second and third tracks should take up one fraction of the space
-  */
-
-
-  /* Apply a 10px gutter between rows and columns */
-
-
-  /*
-    Place items on the grid using their grid area names
-      - Use the image 'grid-template-areas.png' as a reference
-  */
 
 .tab {
   display: none;
@@ -101,6 +89,36 @@ button:hover {
 .bell {
   position: relative;
   cursor: pointer;
+  padding-top: 1em;
+}
+
+/*
+BELL ANIMATION
+*/
+
+#bell:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 
 .active-alert {
@@ -128,6 +146,7 @@ button:hover {
   padding: 0 1em;
   width: 90%;
   margin: 1em auto;
+  margin-top: 0;
   border: 1px solid var(--color-primary);
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -170,8 +189,46 @@ button:hover {
 .sidebar {
   position: relative;
   right: 80px;
-  /* bottom: 80px; */
   -webkit-transition: right .5s;
+}
+
+.autofill {
+  padding-left: 0;
+  border: 1px solid #b2b2b2;
+  width: 90%;
+  margin: 0 auto;
+  background-color: #fff;
+  position: absolute;
+  left: 5%;
+}
+
+#notifications {
+  position: fixed;
+  padding-left: 0;
+  width: 50%;
+  margin: 0 auto;
+  top: 70px;
+  right: 0px;
+}
+
+input#username.field {
+  margin: 0;
+}
+
+#autofill li {
+  /* position: relative; */
+  bottom: 1em;
+  right:1em;
+  height: 40px;
+  padding: 5px;
+  margin: auto;
+  color: #4f4e4e;
+  cursor: pointer;
+}
+
+.active-li {
+  background-color: #f9f9f9;
+  padding: 0;
 }
 
 .close {
@@ -231,7 +288,7 @@ button:hover {
   color: #4f4e4e;
   padding-top: 1em;
   padding-left: 20px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   text-align: center;
 }
 
@@ -239,10 +296,6 @@ button:hover {
   padding-top: 0;
 }
 
-.grid > * {
-  /* color: #fff; */
-  /* padding: 1em; */
-}
 .head {
   display: flex;
   flex-direction: row;
@@ -251,6 +304,7 @@ button:hover {
   color: #fff;
   font-weight: 300;
   background-color: var(--color-primary);
+  z-index: 1000;
 }
 
 .profile > * {
@@ -290,18 +344,17 @@ button:hover {
   width: 50px;
   height: 50px;
   border: none;
-  /* margin-top: 2px; */
   margin-left: 1em;
   cursor: pointer;
 }
 
 .profile-img-container {
-  /* padding-left: ; */
   border-left: 1px solid var(--color-secondary);
 }
 
 .userName {
   display: none;
+  cursor: default;
 }
 
 .sidebar {
@@ -321,10 +374,6 @@ button:hover {
   transition: all .5s;
 }
 
-/* .sidebar-icon {
-  border-left: 3px solid #81C98F;
-} */
-
 .active {
   border-right: 4px solid #81C98F;
   border-radius: 5px;
@@ -340,18 +389,20 @@ button:hover {
 }
 
 .search {
-  /* margin: auto; */
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: #f9f9f9; */
-  /* padding-right: 80px; */
-  /* border-bottom: solid 1px #f4f2f2; */
 }
 
-/* .message button {
-  margin-bottom: 4em;
-} */
+.message,
+.settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #d6d6d6;
+  margin: 1em 0;
+  padding-bottom: 1em;
+}
 
 textarea,
 select,
@@ -370,6 +421,21 @@ input {
   color: #cecece;
 }
 
+input.field {
+  margin-bottom: 0;
+}
+
+input:focus,
+select:focus {
+  background-color: #fff;
+  outline:0 !important;
+}
+
+textarea:focus {
+    border: 2px solid #2d3944;
+    background-color: #fff;
+}
+
 #search {
   background-image: url(../icons/search-interface-symbol.svg);
   background-size: 20px;
@@ -379,34 +445,123 @@ input {
 
 textarea {
   margin-top: 1em;
-  margin-bottom: 2em;
-  height: 100px;
+  margin-bottom: 17px;
+  height: 120px;
   resize: none;
 }
 
-input.checkbox {
-  width: 20px;
-  display: inline-block;
-  margin: 0;
-  margin-right: 6em;
+input[type=checkbox] {
+    visibility: hidden;
 }
 
 label {
   font-size: 1em;
-  padding-right: 20px;
-  padding-left: 20px;
   color: #7c7c7c;
   font-weight: 300;
   display: inline-block;
   position
 }
 
+.checkbox {
+  width: 40px;
+  height: 10px;
+  background: #555;
+  margin: 20px 80px;
+  position: relative;
+  border-radius: 3px;
+}
+
+.checkbox label {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+
+  transition: all .5s ease;
+  cursor: pointer;
+  position: absolute;
+  top: -3px;
+  left: -3px;
+
+  background: #ccc;
+}
+
+.checkbox input[type=checkbox]:checked + label {
+    left: 27px;
+}
+
 .settings-options {
   display: flex;
-  flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
 }
+
+.privacySettings,
+.emailSettings {
+    width: 84px;
+    height: 35px;
+    background: var(--color-primary);
+    margin: 0px 1em;
+    border: solid 1px #f4f2f2;
+    border-radius: 50px;
+    position: relative;
+}
+
+/**
+ * Create the text for the On position
+ */
+ .privacySettings:before,
+.emailSettings:before {
+    content: 'On';
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    height: 2px;
+    color: #fff;
+    font-size: 16px;
+}
+
+/**
+ * Create the label for the off position
+ */
+.privacySettings:after,
+.emailSettings:after {
+    content: 'Off';
+    position: absolute;
+    top: 6px;
+    left: 54px;
+    height: 2px;
+    color: #fff;
+    font-size: 16px;
+}
+
+/**
+ * Create the pill to click
+ */
+.privacySettings label,
+.emailSettings label {
+    display: block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    border: solid 1px #f4f2f2;
+    transition: all .5s ease;
+    cursor: pointer;
+    position: absolute;
+    top: 4px;
+    z-index: 1;
+    left: 4px;
+    background: #f9f9f9;
+}
+
+/**
+ * Create the checkbox event for the label
+ */
+.privacySettings input[type=checkbox]:checked + label,
+.emailSettings input[type=checkbox]:checked + label {
+    left: 53px;
+}
+
 
 ::-webkit-input-placeholder {
   text-align: left;
@@ -431,6 +586,7 @@ label {
   margin: auto;
   height: 210px;
   padding: 1em;
+  width: 95%;
 }
 .traffic-chart {
   margin: auto;
@@ -448,12 +604,31 @@ label {
   padding: 1em;
 }
 
-/* .social-stats {
+.traffic-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-} */
+  justify-content: space-between;
+}
+
+.traffic-options {
+  display: flex;
+  margin-right: .5em;
+}
+
+.traffic-options p {
+  margin: 0 .25em;
+  padding: 0 .5em;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.traffic-options-active {
+  border: 1px solid #81C98F;
+  border-radius: 25px;
+  background-color: #81C98F;
+  color: #fff;
+}
 
 .social-stats-container {
   display: flex;
@@ -469,6 +644,7 @@ label {
   background-color: #7377bf;
   padding: 16px;
   margin-right: 1em;
+  cursor: pointer;
 }
 
 .social-div {
@@ -499,6 +675,7 @@ label {
 
 .new-members {
   padding: 1em 0;
+  padding-bottom: 0;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -512,7 +689,6 @@ label {
   width: 100%;
   margin: auto;
   text-align: center;
-  /* justify-content: space-between; */
 }
 
 .member {
@@ -537,7 +713,6 @@ label {
   margin: 0 auto;
 }
 .settings-buttons button {
-  /* margin: 0 1em; */
   width: 47%;
   margin: 0;
 }
@@ -558,8 +733,27 @@ button.cancel:hover {
   font-size: 1em;
 }
 
-.settings-options:last-of-type {
+.settings-options:nth-last-of-type(2) {
   margin-bottom: 2em;
+}
+
+.settings-options p {
+  margin-left: 20px;
+}
+
+
+textarea:invalid:focus,
+input[type="text"]:invalid:focus {
+  background: #fff;
+  background-image: url(../icons/close.svg);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 98.3% 53%;
+  transition: background-color .25s ease-out;
+}
+
+textarea:invalid:focus {
+  background-position: 98.3% 5%;
 }
 
 
@@ -591,6 +785,7 @@ button.cancel:hover {
   .alert {
     height: 60px;
     padding: 1.5em;
+    margin-top: 1em;
   }
 
   .close-alert {
@@ -626,9 +821,9 @@ button.cancel:hover {
   text-align: left;
 }
 
-  .traffic-chart {
-
-  }
+.traffic-options p {
+  margin: 0 .25em;
+}
 
   .daily-traffic-container {
     height: 320px;
@@ -698,6 +893,41 @@ button.cancel:hover {
   .member p {
     font-size: .8em;
   }
+
+  .message {
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+  }
+  .settings {
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .message, .settings {
+    border-top: none;
+    margin: 0;
+    margin-bottom: 2em;
+    padding-bottom: 2em;
+  }
+
+  .checkboxThree {
+    margin: 0px 3em;
+  }
+
+  .settings-options {
+    padding-left: 1em;
+    align-items: center;
+  }
+  .traffic-options {
+    margin-right: 4em;
+    margin-left: 4em;
+  }
+  #notifications {
+    width: 30%;
+    top: 80px;
+    right: 0px;
+  }
 }
 
 
@@ -718,6 +948,22 @@ button.cancel:hover {
 
   .member {
     padding: 1em 2% 1em 4%;
+  }
+
+  .traffic-header {
+    flex-direction: row;
+  }
+
+  .traffic-header {
+    justify-content: space-between;
+  }
+
+  .traffic-header h1 {
+    margin-left: 0;
+  }
+
+  .traffic-options p {
+    margin: 0 .25em;
   }
 }
 
