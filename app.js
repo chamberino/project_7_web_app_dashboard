@@ -396,6 +396,9 @@ saveButton.addEventListener('click', () => {
 })
 
 const sendMessage = document.querySelector('#sendMessage');
+const messageForUser = document.querySelector('#messageForUser');
 sendMessage.addEventListener('click', () => {
+  if(input.value !== '' && messageForUser.value !== '' ) {
   alert('Your message has been sent!')
+}
 })
